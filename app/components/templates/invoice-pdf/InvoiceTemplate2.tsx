@@ -64,7 +64,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                         <br />
                     </address>
                 </div>
-                <div className="sm:text-right space-y-2">
+                <div className="sm:text-right space-y-1">
                     <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                         <dl className="grid sm:grid-cols-6 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
@@ -78,7 +78,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                         </dl>
                         <dl className="grid sm:grid-cols-6 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
-                                Due date:
+                                Due date
                             </dt>
                             <dd className="col-span-3 text-gray-500">
                                 {new Date(details.dueDate).toLocaleDateString(
@@ -142,7 +142,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
             </div>
 
             <div className="mt-2 flex sm:justify-end">
-                <div className="w-full max-w-2xl sm:text-right space-y-2">
+                <div className="w-full max-w-2xl sm:text-right space-y-1">
                     <div className="grid grid-cols-2 sm:grid-cols-1 gap-3 sm:gap-2">
                         <dl className="grid sm:grid-cols-5 gap-x-3">
                             <dt className="col-span-3 font-semibold text-gray-800">
@@ -163,7 +163,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.discountDetails.amountType ===
-                                        "amount"
+                                            "amount"
                                             ? `- ${details.discountDetails.amount} ${details.currency}`
                                             : `- ${details.discountDetails.amount}%`}
                                     </dd>
@@ -177,7 +177,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.taxDetails.amountType ===
-                                        "amount"
+                                            "amount"
                                             ? `+ ${details.taxDetails.amount} ${details.currency}`
                                             : `+ ${details.taxDetails.amount}%`}
                                     </dd>
@@ -191,7 +191,7 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                                     </dt>
                                     <dd className="col-span-2 text-gray-500">
                                         {details.shippingDetails.costType ===
-                                        "amount"
+                                            "amount"
                                             ? `+ ${details.shippingDetails.cost} ${details.currency}`
                                             : `+ ${details.shippingDetails.cost}%`}
                                     </dd>

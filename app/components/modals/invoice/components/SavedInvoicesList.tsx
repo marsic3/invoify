@@ -97,7 +97,7 @@ const SavedInvoicesList = ({ setModalState }: SavedInvoicesListProps) => {
                     <Card
                         key={idx}
                         className="p-2 border rounded-sm hover:border-blue-500 hover:shadow-lg cursor-pointer"
-                        // onClick={() => handleSelect(invoice)}
+                    // onClick={() => handleSelect(invoice)}
                     >
                         <CardContent className="flex justify-between">
                             <div>
@@ -129,7 +129,7 @@ const SavedInvoicesList = ({ setModalState }: SavedInvoicesListProps) => {
                             <div className="flex flex-col gap-2">
                                 <BaseButton
                                     tooltipLabel="Load invoice details into the form"
-                                    variant="outline"
+                                    variant="default"
                                     size="sm"
                                     onClick={() => load(invoice)}
                                 >
@@ -138,7 +138,7 @@ const SavedInvoicesList = ({ setModalState }: SavedInvoicesListProps) => {
 
                                 <BaseButton
                                     tooltipLabel="Load invoice and generate PDF"
-                                    variant="outline"
+                                    variant="default"
                                     size="sm"
                                     onClick={() => loadAndGeneratePdf(invoice)}
                                 >

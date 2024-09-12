@@ -52,52 +52,49 @@ const InvoiceForm = () => {
     }, [invoiceNumber]);
 
     return (
-        <div className={`xl:w-[55%]`}>
-            <Card>
-                <CardHeader>
-                    <div className="flex gap-3">
-                        <CardTitle className="flex items-center gap-3">
-                            <span className="uppercase">
+        <div className="flex h-full bg-slate-100 w-1/3">
+            <Card className="h-auto w-full flex flex-col items-center bg-[#f0f8ff]">
+                <CardHeader className="flex gap-2">
+                    <div className="flex gap-1">
+                        <CardTitle className="flex items-center gap-1" >
+                            <span className="uppercase text-xs font-semibold">
                                 {_t("form.title")}
                             </span>
-                        </CardTitle>
-                        <Badge variant="secondary" className="w-fit">
-                            <p style={{ fontSize: "14px" }}>
+                        </CardTitle >
+                        <Badge variant="default" className="w-fit">
+                            <p className="text-xs">
                                 {invoiceNumberLabel}
                             </p>
                         </Badge>
-                    </div>
+                    </div >
                     <CardDescription>{_t("form.description")}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <div className="space-y-8">
-                        <Wizard>
-                            <WizardStep>
-                                <div className="flex flex-wrap gap-x-20 gap-y-10">
-                                    <BillFromSection />
+                </CardHeader >
+                <CardContent className="flex flex-col w-full h-full items-center">
+                    <Wizard>
+                        <WizardStep>
+                            <BillFromSection />
+                        </WizardStep>
+                        <WizardStep>
+                            <BillToSection />
+                        </WizardStep>
+                        <WizardStep>
+                            <div className="flex flex-wrap gap-y-10">
+                                <InvoiceDetails />
+                            </div>
+                        </WizardStep>
 
-                                    <BillToSection />
-                                </div>
-                            </WizardStep>
-                            <WizardStep>
-                                <div className="flex flex-wrap gap-y-10">
-                                    <InvoiceDetails />
-                                </div>
-                            </WizardStep>
+                        <WizardStep>
+                            <Items />
+                        </WizardStep>
 
-                            <WizardStep>
-                                <Items />
-                            </WizardStep>
+                        <WizardStep>
+                            <PaymentInformation />
+                        </WizardStep>
 
-                            <WizardStep>
-                                <PaymentInformation />
-                            </WizardStep>
-
-                            <WizardStep>
-                                <InvoiceSummary />
-                            </WizardStep>
-                        </Wizard>
-                    </div>
+                        <WizardStep>
+                            <InvoiceSummary />
+                        </WizardStep>
+                    </Wizard>
                 </CardContent>
             </Card>
         </div>

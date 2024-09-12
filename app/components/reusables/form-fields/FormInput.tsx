@@ -47,7 +47,7 @@ const FormInput = ({
                         <Input
                             {...field}
                             placeholder={placeholder}
-                            className="w-[13rem]"
+                            className="w-[8rem]"
                             {...props}
                         />
                     </FormControl>
@@ -63,7 +63,7 @@ const FormInput = ({
             name={name}
             render={({ field }) => (
                 <FormItem>
-                    <div className="flex justify-between gap-5 items-center text-sm">
+                    <div className="flex justify-between gap-2 items-center text-xs">
                         {label && <FormLabel>{`${label}:`}</FormLabel>}
                         {labelHelper && (
                             <span className="text-xs"> {labelHelper}</span>
@@ -74,7 +74,7 @@ const FormInput = ({
                                 <Input
                                     {...field}
                                     placeholder={placeholder}
-                                    className="w-[13rem]"
+                                    className="w-[8rem]"
                                     {...props}
                                 />
                             </FormControl>

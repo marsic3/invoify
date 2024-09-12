@@ -7,7 +7,7 @@ import {
     FormInput,
     FormFile,
     Subheading,
-    TemplateSelector,
+    // TemplateSelector,
 } from "@/app/components";
 
 // Contexts
@@ -55,9 +55,9 @@ const InvoiceDetails = () => {
                     />
                 </div>
 
-                <div className="flex flex-col gap-2">
+                {/* <div className="flex flex-col gap-2">
                     <TemplateSelector />
-                </div>
+                </div> */}
             </div>
         </section>
     );

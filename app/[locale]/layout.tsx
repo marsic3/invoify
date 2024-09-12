@@ -86,15 +86,17 @@ export default async function LocaleLayout({
                 />
             </head>
             <body
-                className={`${outfit.className} ${dancingScript.variable} ${parisienne.variable} ${greatVibes.variable} ${alexBrush.variable} antialiased bg-slate-100 dark:bg-slate-800`}
+                className="bg-gray-100"
             >
                 <NextIntlClientProvider locale={locale} messages={messages}>
                     <Providers>
-                        <BaseNavbar />
+                        {/* <BaseNavbar /> */}
 
-                        <div className="flex flex-col">{children}</div>
+                        <div className="flex flex-col items-center justify-center w-full h-screen">
+                            {children}
+                        </div>
 
-                        <BaseFooter />
+                        {/* <BaseFooter /> */}
 
                         {/* Toast component */}
                         <Toaster />

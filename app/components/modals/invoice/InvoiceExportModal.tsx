@@ -46,7 +46,7 @@ const InvoiceExportModal = ({ children }: InvoiceExportModalType) => {
                 <div className="flex flex-wrap flex-row gap-5">
                     <BaseButton
                         tooltipLabel="Export Invoice as JSON"
-                        variant="outline"
+                        variant="default"
                         disabled={invoicePdfLoading}
                         onClick={() => exportInvoiceAs(ExportTypes.JSON)}
                     >
@@ -54,7 +54,7 @@ const InvoiceExportModal = ({ children }: InvoiceExportModalType) => {
                     </BaseButton>
                     <BaseButton
                         tooltipLabel="Export Invoice as CSV"
-                        variant="outline"
+                        variant="default"
                         disabled={invoicePdfLoading}
                         onClick={() => exportInvoiceAs(ExportTypes.CSV)}
                     >
@@ -63,7 +63,7 @@ const InvoiceExportModal = ({ children }: InvoiceExportModalType) => {
 
                     <BaseButton
                         tooltipLabel="Export Invoice as XML"
-                        variant="outline"
+                        variant="default"
                         disabled={invoicePdfLoading}
                         onClick={() => exportInvoiceAs(ExportTypes.XML)}
                     >
@@ -72,7 +72,7 @@ const InvoiceExportModal = ({ children }: InvoiceExportModalType) => {
 
                     <BaseButton
                         tooltipLabel="Export Invoice as XLSX"
-                        variant="outline"
+                        variant="default"
                         disabled={invoicePdfLoading}
                         onClick={() => exportInvoiceAs(ExportTypes.XLSX)}
                     >

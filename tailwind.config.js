@@ -16,6 +16,15 @@ module.exports = {
       },
     },
     extend: {
+       keyframes: {
+          "shine": {
+            from: { backgroundPosition: '200% 0' },
+            to: { backgroundPosition: '-200% 0' },
+          },
+        },
+        animation: {
+          "shine": "shine 8s ease-in-out infinite",
+        },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

@@ -33,6 +33,7 @@ import { InvoiceType } from "@/types";
 const TemplateSelector = () => {
     const { watch, setValue } = useFormContext<InvoiceType>();
     const formValues = watch();
+
     const templates = [
         {
             id: 1,
@@ -74,10 +75,10 @@ const TemplateSelector = () => {
                                         <div className="relative">
                                             {formValues.details.pdfTemplate ===
                                                 template.id && (
-                                                <div className="shadow-lg absolute right-2 top-2 rounded-full bg-blue-300 dark:bg-blue-600">
-                                                    <Check />
-                                                </div>
-                                            )}
+                                                    <div className="shadow-lg absolute right-2 top-2 rounded-full bg-blue-300 dark:bg-blue-600">
+                                                        <Check />
+                                                    </div>
+                                                )}
                                             <Image
                                                 src={template.img}
                                                 alt={template.name}

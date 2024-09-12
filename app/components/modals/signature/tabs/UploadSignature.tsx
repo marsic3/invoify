@@ -58,7 +58,7 @@ const UploadSignature = ({ handleSaveSignature }: UploadSignatureProps) => {
                     {uploadSignatureImg && (
                         <BaseButton
                             tooltipLabel="Remove signature image"
-                            variant="outline"
+                            variant="default"
                             onClick={handleRemoveUploadedSignature}
                         >
                             Remove

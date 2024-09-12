@@ -50,7 +50,7 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                 name={name}
                 render={({ field }) => (
                     <FormItem>
-                        <div className="flex justify-between gap-5 items-center text-sm">
+                        <div className="flex justify-between gap-2 items-center text-xs">
                             <div>
                                 <FormLabel>{label}:</FormLabel>
                             </div>
@@ -66,7 +66,7 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                                 className={cn(
                                                     "w-[13rem]",
                                                     !field.value &&
-                                                        "text-muted-foreground"
+                                                    "text-muted-foreground"
                                                 )}
                                             >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />

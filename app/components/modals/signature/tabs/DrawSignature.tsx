@@ -76,7 +76,7 @@ const DrawSignature = ({ handleSaveSignature }: DrawSignatureProps) => {
                     {signatureData && (
                         <BaseButton
                             tooltipLabel="Clear the signature board"
-                            variant="outline"
+                            variant="default"
                             className="w-fit gap-2"
                             onClick={clearSignature}
                         >

@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 
 // Types
 import { InvoiceType } from "@/types";
+import GithubCardSkew from "@/components/ui/github-card-skew";
+import { ThreeDCardDemo } from "@/components/ui/three-card";
 
 type InvoiceLayoutProps = {
     data: InvoiceType;
@@ -37,13 +39,13 @@ export default function InvoiceLayout({ data, children }: InvoiceLayoutProps) {
     );
 
     return (
-        <>
+        <div className="flex h-full  w-full flex-1 flex-col items-center bg-[#FDFDFD] p-6 [perspective:1000px] invoice:relative invoice:h-auto invoice:max-h-none invoice:justify-center">
             {head}
-            <section style={{ fontFamily: "Outfit, sans-serif" }}>
-                <div className="flex flex-col p-4 sm:p-10 bg-white rounded-xl min-h-[60rem]">
+            <section className="relative w-full h-full flex flex-col items-center justify-center">
+                <div className="relative w-full h-full flex flex-col items-center justify-start">
                     {children}
                 </div>
             </section>
-        </>
+        </div>
     );
 }

@@ -14,6 +14,8 @@ import { useInvoiceContext } from "@/contexts/InvoiceContext";
 
 // Types
 import { InvoiceType } from "@/types";
+import { GridBackgroundDemo } from "@/components/ui/grid-background";
+import { ThreeDCardDemo } from "@/components/ui/three-card";
 
 const InvoiceMain = () => {
     const { handleSubmit } = useFormContext<InvoiceType>();
@@ -22,20 +24,23 @@ const InvoiceMain = () => {
     const { onFormSubmit } = useInvoiceContext();
 
     return (
-        <>
+        <div className="flex w-full h-full justify-between">
             <Form {...useFormContext<InvoiceType>()}>
                 <form
                     onSubmit={handleSubmit(onFormSubmit, (err) => {
                         console.log(err);
                     })}
+                    className="flex w-full h-full"
                 >
-                    <div className="flex flex-wrap">
+                    <div className="flex w-full h-full justify-between">
                         <InvoiceForm />
-                        <InvoiceActions />
+                        <ThreeDCardDemo>
+                            <InvoiceActions />
+                        </ThreeDCardDemo>
                     </div>
                 </form>
             </Form>
-        </>
+        </div>
     );
 };
 

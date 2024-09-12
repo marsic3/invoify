@@ -14,7 +14,7 @@ import { FORM_FILL_VALUES } from "@/lib/variables";
 
 type DevDebugProps = {};
 
-const DevDebug = ({}: DevDebugProps) => {
+const DevDebug = ({ }: DevDebugProps) => {
     const { reset, formState } = useFormContext();
     return (
         <div className="flex border-2 border-red-500 rounded-md">
@@ -23,7 +23,7 @@ const DevDebug = ({}: DevDebugProps) => {
                 Form: {formState.isDirty ? "Dirty" : "Clean"}
                 <BaseButton
                     tooltipLabel="Form Test Fill"
-                    variant="outline"
+                    variant="default"
                     onClick={() => reset(FORM_FILL_VALUES)}
                 >
                     Fill in the form

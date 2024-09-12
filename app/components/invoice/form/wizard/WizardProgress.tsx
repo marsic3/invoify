@@ -53,12 +53,12 @@ const WizardProgress = ({ wizard }: WizardProgressProps) => {
      */
     const returnButtonVariant = (step: WizardStepType) => {
         if (!step.isValid) {
-            return "destructive";
+            return "default";
         }
         if (step.id === activeStep) {
-            return "default";
+            return "link";
         } else {
-            return "outline";
+            return "default";
         }
     };
 

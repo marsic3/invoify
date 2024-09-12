@@ -21,7 +21,7 @@ type SendPdfEmailProps = {
 };
 
 export default function SendPdfEmail({ invoiceNumber }: SendPdfEmailProps) {
-    const logo = `${BASE_URL}/assets/img/invoify-logo.png`;
+    const logo = `${BASE_URL}/assets/img/logo.png`;
     return (
         <Html>
             <Head />

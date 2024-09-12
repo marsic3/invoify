@@ -70,7 +70,7 @@ const TypeSignature = ({ handleSaveSignature }: TypeSignatureProps) => {
                     {typedSignature && (
                         <BaseButton
                             tooltipLabel="Clear signature"
-                            variant="outline"
+                            variant="default"
                             onClick={clearTypedSignature}
                         >
                             Clear

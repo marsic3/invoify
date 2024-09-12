@@ -10,7 +10,8 @@ import { BaseButton } from "@/app/components";
 import { useTranslationContext } from "@/contexts/TranslationContext";
 
 // Icons
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowRightIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const WizardNavigation = () => {
     const { isFirstStep, isLastStep, handleStep, previousStep, nextStep } =
@@ -18,24 +19,24 @@ const WizardNavigation = () => {
 
     const { _t } = useTranslationContext();
     return (
-        <div className="flex justify-end gap-5">
+        <div className="flex justify-end h-full items-end gap-5">
             {!isFirstStep && (
-                <BaseButton
-                    tooltipLabel="Go back to the previous step"
-                    onClick={previousStep}
-                >
-                    <ArrowLeft />
+                <Button variant="expandIcon" Icon={ArrowLeft} iconPlacement="left" onClick={previousStep}>
                     {_t("form.wizard.back")}
-                </BaseButton>
+                </Button>
             )}
-            <BaseButton
+            {/* <BaseButton
                 tooltipLabel="Go to the next step"
                 disabled={isLastStep}
                 onClick={nextStep}
             >
                 {_t("form.wizard.next")}
                 <ArrowRight />
-            </BaseButton>
+            </BaseButton> */}
+            <Button variant="expandIcon" Icon={ArrowRightIcon} iconPlacement="right" disabled={isLastStep}
+                onClick={nextStep}>
+                {_t("form.wizard.next")}
+            </Button>
         </div>
     );
 };

@@ -49,7 +49,7 @@ const CurrencySelector = ({
                 name={name}
                 render={({ field }) => (
                     <FormItem>
-                        <div className="flex justify-between gap-5 items-center text-sm">
+                        <div className="flex justify-between gap-2 items-center text-xs">
                             <div>
                                 <FormLabel>{label}:</FormLabel>
                             </div>
