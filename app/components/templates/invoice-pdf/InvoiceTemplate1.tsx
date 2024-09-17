@@ -12,113 +12,121 @@ import { DATE_OPTIONS } from "@/lib/variables";
 // Types
 import { InvoiceType } from "@/types";
 import Image from "next/image";
-import { useWizard } from "react-use-wizard";
+import { SkeletonField } from "./SkeletonField";
+import { SkeletonLogo } from "./SkeletonLogo";
+import useWizzardStore from "@/app/store/wizzardStore";
 
 const InvoiceTemplate = (data: InvoiceType) => {
     const { sender, receiver, details } = data;
-    // const { isLoading,
-    //     isLastStep,
-    //     isFirstStep,
-    //     activeStep,
-    //     stepCount,
-    //     previousStep,
-    //     nextStep,
-    //     goToStep,
-    //     handleStep, } = useWizard();
-
+    const { activeStep, setActiveStep } = useWizzardStore() as any;
 
     return (
         <InvoiceLayout data={data}>
-            <div className="card w-full">
+            <div className="card w-full h-fit items-start rounded-md border-b border-[#ebebeb] hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(2)}>
                 <div className="card-details">
-                    <div className="group w-full hover:data-[active=false]:bg-black/[0.02] relative z-10 flex h-full justify-between">
+                    <div className="group w-full  relative z-10 flex h-full justify-between">
                         <div className="text-lg font-semibold text-gray-500">
                             <h3 className="text-xs font-semibold uppercase text-gray-500 my-0">
                                 Invoice NO
                             </h3>
                             <span className="text-lg font-semibold text-gray-800">
-                                {details.invoiceNumber || "N/A"}
+                                {details.invoiceNumber || <SkeletonField />}
                             </span>
                         </div>
-                        <div className="flex items-center gap-8">
+                        <div className="flex items-center gap-8 text-sm">
                             <dl className="flex flex-col justify-start items-start ">
                                 <dt className="font-semibold text-gray-800">Issued</dt>
                                 <dd className="text-gray-500 ml-0">
-                                    {new Date(details.invoiceDate).toLocaleDateString("en-US")}
+                                    <dd className="text-gray-500 ml-0">
+                                        {details.invoiceDate ? (
+                                            new Date(details.invoiceDate).toLocaleDateString("en-US")
+                                        ) : (
+                                            <SkeletonField />
+                                        )}
+                                    </dd>
                                 </dd>
                             </dl>
                             <dl className="flex flex-col justify-start items-start">
                                 <dt className="font-semibold text-gray-800">Due date</dt>
                                 <dd className="text-gray-500 ml-0">
-                                    {new Date(details.dueDate).toLocaleDateString("en-US")}
+                                    <dd className="text-gray-500 ml-0">
+                                        {details.dueDate ? (
+                                            new Date(details.dueDate).toLocaleDateString("en-US")
+                                        ) : (
+                                            <SkeletonField />
+                                        )}
+                                    </dd>
+
                                 </dd>
                             </dl>
                         </div>
                     </div>
                 </div>
-                <button className="card-button">More info</button>
-            </div >
+            </div>
 
             {/* create bill to and bill from section that will be 2 in grid */}
             <div className="grid grid-cols-2 mt-4 w-full border-1 border-[#ebebeb] border-solid pb-4" >
-                <div className="card w-full">
+                <div className="card w-full rounded-md border-r border-[#ebebeb] hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(0)}>
                     <div className="card-details">
                         <h3 className="text-xs font-semibold uppercase text-gray-500 my-2">
                             From
                         </h3>
                         {/* logo image -> name -> email -> address */}
                         <div className="flex flex-col items-start">
-                            {sender.senderLogo && (
+                            {sender.senderLogo ? (
                                 <Image
                                     src={sender.senderLogo}
                                     width={140}
                                     height={100}
                                     alt={`Logo of ${sender.name}`}
-                                />
-                            )}
+                                />) : <SkeletonLogo />
+                            }
                             <h3 className="mt-2 whitespace-normal text-xl font-medium text-gray-800">
-                                {sender.name}
+                                {sender.name ? sender.name : <SkeletonField />}
                             </h3>
                             <address className="mt-2 not-italic text-[#999999] text-xs">
-                                {sender.address}
+                                {sender.address ? sender.address : <SkeletonField />}
                                 <br />
-                                {sender.zipCode}, {sender.city}
+                                {sender.zipCode && sender.city ? `${sender.zipCode}, ${sender.city}` : <SkeletonField />}
                                 <br />
-                                {sender.country}
+                                {sender.country ? sender.country : <SkeletonField />}
                                 <br />
                             </address>
 
                         </div>
                     </div>
-                    <button className="card-button">More info</button>
-                </div >
-                <div className="card w-full">
+                </div>
+                {/* vertical line */}
+                {/* <div className="absolute h-[15.5em] w-[1px] right-[50%] bg-[#ebebeb]"></div> */}
+                {/* receiver card */}
+                <div className="card w-full rounded-md hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(1)}>
                     <div className="card-details">
                         <h3 className="text-xs font-semibold uppercase text-gray-500 my-2">
                             To
                         </h3>
-                        {receiver.receiverLogo && (
+                        {receiver.receiverLogo ? (
                             <Image
                                 src={receiver.receiverLogo}
                                 width={140}
                                 height={100}
                                 alt={`Logo of ${receiver.name}`}
-                            />
-                        )}
+                            />) : <SkeletonLogo />
+                        }
                         <h3 className="mt-2 whitespace-normal text-xl font-medium text-gray-800">
-                            {receiver.name}
+                            {receiver.name ? receiver.name : <SkeletonField />}
                         </h3>
                         <address className="mt-2 not-italic text-[#999999] text-xs">
-                            {receiver.address}, {receiver.zipCode}
+                            {receiver.address && receiver.zipCode ? `${receiver.address}, ${receiver.zipCode}` : <SkeletonField />}
                             <br />
-                            {receiver.city}, {receiver.country}
+                            {receiver.city && receiver.country ? `${receiver.city}, ${receiver.country}` : <SkeletonField />}
                             <br />
                         </address>
                     </div>
-                    <button className="card-button">More info</button>
                 </div>
             </div>
-            <div className="card w-full">
+            {/* horizontal line */}
+
+            <div className="card w-full rounded-md hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(3)}>
                 <div className="card-details">
                     <div className="mt-3">
                         <div className="p-1 rounded-lg space-y-2 text-sm">
@@ -165,12 +173,12 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                     </React.Fragment>
                                 ))}
                             </div>
-                            <button className="card-button">More info</button>
                         </div>
                     </div>
                 </div>
+                <div className="absolute h-[1px] bg-[#ebebeb] w-full"></div>
             </div>
-            <div className="card w-full">
+            <div className="card w-full rounded-md hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(4)}>
                 <div className="card-details">
                     <div className="flex sm:justify-end">
                         <div className="sm:text-right">
@@ -179,7 +187,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                     <dt className="col-span-3 font-semibold text-gray-800">
                                         Subtotal:
                                     </dt>
-                                    <dd className="col-span-2 text-[#999999]">
+                                    <dd className="col-span-2 text-[#999999] text-xs">
                                         {formatNumberWithCommas(
                                             Number(details.subTotal)
                                         )}{" "}
@@ -192,7 +200,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                             <dt className="col-span-3 font-semibold text-gray-800">
                                                 Discount:
                                             </dt>
-                                            <dd className="col-span-2 text-[#999999]">
+                                            <dd className="col-span-2 text-[#999999] text-xs">
                                                 {details.discountDetails.amountType ===
                                                     "amount"
                                                     ? `- ${details.discountDetails.amount} ${details.currency}`
@@ -206,7 +214,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                             <dt className="col-span-3 font-semibold text-gray-800">
                                                 Tax:
                                             </dt>
-                                            <dd className="col-span-2 text-[#999999]">
+                                            <dd className="col-span-2 text-[#999999] text-xs">
                                                 {details.taxDetails.amountType ===
                                                     "amount"
                                                     ? `+ ${details.taxDetails.amount} ${details.currency}`
@@ -220,7 +228,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                             <dt className="col-span-3 font-semibold text-gray-800">
                                                 Shipping:
                                             </dt>
-                                            <dd className="col-span-2 text-[#999999]">
+                                            <dd className="col-span-2 text-[#999999] text-xs">
                                                 {details.shippingDetails.costType ===
                                                     "amount"
                                                     ? `+ ${details.shippingDetails.cost} ${details.currency}`
@@ -232,7 +240,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                     <dt className="col-span-3 font-semibold text-gray-800">
                                         Total:
                                     </dt>
-                                    <dd className="col-span-2 text-[#999999]">
+                                    <dd className="col-span-2 text-[#999999] text-xs">
                                         {formatNumberWithCommas(
                                             Number(details.totalAmount)
                                         )}{" "}
@@ -244,7 +252,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                         <dt className="col-span-3 font-semibold text-gray-800">
                                             Total in words:
                                         </dt>
-                                        <dd className="col-span-2 text-[#999999]">
+                                        <dd className="col-span-2 text-[#999999] text-xs">
                                             <em>
                                                 {details.totalAmountInWords}{" "}
                                                 {details.currency}
@@ -255,8 +263,8 @@ const InvoiceTemplate = (data: InvoiceType) => {
                             </div>
                         </div>
                     </div>
-                    <button className="card-button">More info</button>
                 </div>
+                <div className="absolute h-[1px] bg-[#ebebeb] w-full"></div>
             </div>
 
 

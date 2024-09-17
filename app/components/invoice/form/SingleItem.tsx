@@ -110,7 +110,7 @@ const SingleItem = ({
         <div
             style={style}
             {...attributes}
-            className={`${boxDragClasses} group flex flex-col gap-y-5 p-3 my-2 cursor-default rounded-xl bg-gray-50 dark:bg-slate-800 dark:border-gray-600`}
+            className={`${boxDragClasses} group flex flex-col gap-y-5 p-3 my-2 cursor-default rounded-xl bg-white`}
         >
             {/* {isDragging && <div className="bg-blue-600 h-1 rounded-full"></div>} */}
             <div className="flex flex-wrap justify-between">
@@ -158,14 +158,14 @@ const SingleItem = ({
                 key={index}
             >
                 <FormInput
-                    name={`${name}[${index}].name`}
+                    name={`${name} [${index}].name`}
                     label={_t("form.steps.lineItems.name")}
                     placeholder="Item name"
                     vertical
                 />
 
                 <FormInput
-                    name={`${name}[${index}].quantity`}
+                    name={`${name} [${index}].quantity`}
                     type="number"
                     label={_t("form.steps.lineItems.quantity")}
                     placeholder={_t("form.steps.lineItems.quantity")}
@@ -174,7 +174,7 @@ const SingleItem = ({
                 />
 
                 <FormInput
-                    name={`${name}[${index}].unitPrice`}
+                    name={`${name} [${index}].unitPrice`}
                     type="number"
                     label={_t("form.steps.lineItems.rate")}
                     labelHelper={`(${currency})`}
@@ -188,7 +188,7 @@ const SingleItem = ({
                         <Label>{_t("form.steps.lineItems.total")}</Label>
                     </div>
                     <Input
-                        value={`${total} ${currency}`}
+                        value={`${total} ${currency} `}
                         readOnly
                         placeholder="Item total"
                         className="border-none font-medium text-lg bg-transparent"
@@ -197,7 +197,7 @@ const SingleItem = ({
                 </div>
             </div>
             <FormTextarea
-                name={`${name}[${index}].description`}
+                name={`${name} [${index}].description`}
                 label={_t("form.steps.lineItems.description")}
                 placeholder="Item description"
             />

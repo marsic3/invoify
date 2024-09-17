@@ -50,7 +50,7 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                 name={name}
                 render={({ field }) => (
                     <FormItem>
-                        <div className="flex justify-between gap-2 items-center text-xs">
+                        <div className="flex justify-between gap-2 items-center text-sm">
                             <div>
                                 <FormLabel>{label}:</FormLabel>
                             </div>

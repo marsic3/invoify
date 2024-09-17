@@ -40,43 +40,50 @@ const BillFromSection = () => {
     };
 
     return (
-        <section className="flex flex-col gap-3 w-full">
+        <section className="flex flex-col gap-5 w-full">
             <Subheading>{_t("form.steps.fromAndTo.billFrom")}:</Subheading>
 
             <FormInput
                 name="sender.name"
                 label={_t("form.steps.fromAndTo.name")}
                 placeholder="Your name"
+                vertical
             />
             <FormInput
                 name="sender.address"
                 label={_t("form.steps.fromAndTo.address")}
                 placeholder="Your address"
+                vertical
             />
             <FormInput
                 name="sender.zipCode"
                 label={_t("form.steps.fromAndTo.zipCode")}
                 placeholder="Your zip code"
+                vertical
             />
             <FormInput
                 name="sender.city"
                 label={_t("form.steps.fromAndTo.city")}
                 placeholder="Your city"
+                vertical
             />
             <FormInput
                 name="sender.country"
                 label={_t("form.steps.fromAndTo.country")}
                 placeholder="Your country"
+                vertical
             />
             <FormInput
                 name="sender.email"
                 label={_t("form.steps.fromAndTo.email")}
-                placeholder="Your email"
+                // placeholder="Your email"
+                vertical
             />
             <FormInput
                 name="sender.phone"
                 label={_t("form.steps.fromAndTo.phone")}
-                placeholder="Your phone number"
+                // placeholder="Your phone number"
+                vertical
             />
 
             {/* //? key = field.id fixes a bug where wrong field gets deleted  */}

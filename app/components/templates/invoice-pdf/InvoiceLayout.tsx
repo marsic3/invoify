@@ -39,10 +39,10 @@ export default function InvoiceLayout({ data, children }: InvoiceLayoutProps) {
     );
 
     return (
-        <div className="flex h-full  w-full flex-1 flex-col items-center bg-[#FDFDFD] p-6 [perspective:1000px] invoice:relative invoice:h-auto invoice:max-h-none invoice:justify-center">
+        <div className="flex flex-col items-center justify-between w-full h-full">
             {head}
             <section className="relative w-full h-full flex flex-col items-center justify-center">
-                <div className="relative w-full h-full flex flex-col items-center justify-start">
+                <div className="w-full h-full flex flex-col items-center justify-start">
                     {children}
                 </div>
             </section>

@@ -48,36 +48,43 @@ const BillToSection = () => {
                 name="receiver.name"
                 label={_t("form.steps.fromAndTo.name")}
                 placeholder="Receiver name"
+                vertical
             />
             <FormInput
                 name="receiver.address"
                 label={_t("form.steps.fromAndTo.address")}
                 placeholder="Receiver address"
+                vertical
             />
             <FormInput
                 name="receiver.zipCode"
                 label={_t("form.steps.fromAndTo.zipCode")}
                 placeholder="Receiver zip code"
+                vertical
             />
             <FormInput
                 name="receiver.city"
                 label={_t("form.steps.fromAndTo.city")}
                 placeholder="Receiver city"
+                vertical
             />
             <FormInput
                 name="receiver.country"
                 label={_t("form.steps.fromAndTo.country")}
                 placeholder="Receiver country"
+                vertical
             />
             <FormInput
                 name="receiver.email"
                 label={_t("form.steps.fromAndTo.email")}
                 placeholder="Receiver email"
+                vertical
             />
             <FormInput
                 name="receiver.phone"
                 label={_t("form.steps.fromAndTo.phone")}
                 placeholder="Receiver phone number"
+                vertical
             />
 
             {/* //? key = field.id fixes a bug where wrong field gets deleted  */}

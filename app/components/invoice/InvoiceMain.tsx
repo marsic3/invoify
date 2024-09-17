@@ -14,8 +14,7 @@ import { useInvoiceContext } from "@/contexts/InvoiceContext";
 
 // Types
 import { InvoiceType } from "@/types";
-import { GridBackgroundDemo } from "@/components/ui/grid-background";
-import { ThreeDCardDemo } from "@/components/ui/three-card";
+import { useWizzardStore } from "@/app/store/wizzardStore";
 
 const InvoiceMain = () => {
     const { handleSubmit } = useFormContext<InvoiceType>();
@@ -23,6 +22,14 @@ const InvoiceMain = () => {
     // Get the needed values from invoice context
     const { onFormSubmit } = useInvoiceContext();
 
+    const {
+        activeStep,
+        setActiveStep
+    } = useWizzardStore() as any;
+
+    const onWizardChange = (step: number) => {
+        setActiveStep(step);
+    }
     return (
         <div className="flex w-full h-full justify-between">
             <Form {...useFormContext<InvoiceType>()}>
@@ -33,10 +40,12 @@ const InvoiceMain = () => {
                     className="flex w-full h-full"
                 >
                     <div className="flex w-full h-full justify-between">
-                        <InvoiceForm />
-                        <ThreeDCardDemo>
-                            <InvoiceActions />
-                        </ThreeDCardDemo>
+                        <InvoiceForm onWizardChange={onWizardChange} activeStep={activeStep} />
+                        <div className="not-prose flex w-full items-center justify-center z-[15] relative bg-custom-gradient shadow-light dark:shadow-dark">
+                            <div className="flex flex-col items-center justify-center w-[45em] h-[55em] bg-white px-5 py-5 mb-5 shadow-sm border border-[#9999] rounded-md">
+                                <InvoiceActions />
+                            </div>
+                        </div>
                     </div>
                 </form>
             </Form>

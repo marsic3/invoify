@@ -38,7 +38,7 @@ const FormTextarea = ({
                     {labelHelper && (
                         <span className="text-xs"> {labelHelper}</span>
                     )}
-                    <div className="flex justify-between gap-2 items-center text-xs">
+                    <div className="flex justify-between gap-2 items-center text-sm">
                         <div>
                             <FormControl>
                                 <Textarea

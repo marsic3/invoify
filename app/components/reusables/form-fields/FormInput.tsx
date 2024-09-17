@@ -36,8 +36,8 @@ const FormInput = ({
             control={control}
             name={name}
             render={({ field }) => (
-                <FormItem>
-                    {label && <FormLabel>{`${label}:`}</FormLabel>}
+                <FormItem className="w-full relative group flex h-10 items-center justify-between border-b border-[#ebebeb] transition-all focus-within:border-[#0094FF] [&:hover:not(:focus-within)]:border-black/20">
+                    {label && <FormLabel className="text-xs font-bold">{`${label}:`}</FormLabel>}
 
                     {labelHelper && (
                         <span className="text-xs"> {labelHelper}</span>
@@ -47,7 +47,7 @@ const FormInput = ({
                         <Input
                             {...field}
                             placeholder={placeholder}
-                            className="w-[8rem]"
+                            className="w-fit px-4 text-sm bg-transparent justify-end"
                             {...props}
                         />
                     </FormControl>
@@ -63,7 +63,7 @@ const FormInput = ({
             name={name}
             render={({ field }) => (
                 <FormItem>
-                    <div className="flex justify-between gap-2 items-center text-xs">
+                    <div className="flex justify-between gap-2 items-center text-sm">
                         {label && <FormLabel>{`${label}:`}</FormLabel>}
                         {labelHelper && (
                             <span className="text-xs"> {labelHelper}</span>

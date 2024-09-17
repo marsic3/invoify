@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 
 // React Wizard
 import { useWizard } from "react-use-wizard";
@@ -10,10 +10,21 @@ import { WizardNavigation, WizardProgress } from "@/app/components";
 
 type WizardStepProps = {
     children: React.ReactNode;
+    activeStep: number;
 };
 
-const WizardStep = ({ children }: WizardStepProps) => {
-    const wizard = useWizard();
+const WizardStep = ({ children, activeStep }: WizardStepProps) => {
+    const { goToStep } = useWizard();
+
+    const onWizardChange = (step: number) => {
+        console.log(step);
+
+    }
+
+    useEffect(() => {
+        goToStep(activeStep);
+    }, [activeStep]);
+
     return (
         <div className="flex flex-col gap-4 w-full h-full">
             {/* <WizardProgress wizard={wizard} /> */}

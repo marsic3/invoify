@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(180deg, #F5F7FE 0%, #D7E0F8 100%)',
+      },
        keyframes: {
           "shine": {
             from: { backgroundPosition: '200% 0' },
@@ -74,6 +77,7 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
