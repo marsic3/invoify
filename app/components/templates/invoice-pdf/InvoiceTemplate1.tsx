@@ -20,6 +20,8 @@ const InvoiceTemplate = (data: InvoiceType) => {
     const { sender, receiver, details } = data;
     const { activeStep, setActiveStep } = useWizzardStore() as any;
 
+    console.log(details, 'details')
+
     return (
         <InvoiceLayout data={data}>
             <div className="card w-full h-fit items-start rounded-md border-b border-[#ebebeb] hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(2)}>
@@ -30,7 +32,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                 Invoice NO
                             </h3>
                             <span className="text-lg font-semibold text-gray-800">
-                                {details.invoiceNumber || <SkeletonField />}
+                                {details.invoiceNumber || <SkeletonField className="w-[100px]" />}
                             </span>
                         </div>
                         <div className="flex items-center gap-8 text-sm">
@@ -41,7 +43,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                         {details.invoiceDate ? (
                                             new Date(details.invoiceDate).toLocaleDateString("en-US")
                                         ) : (
-                                            <SkeletonField />
+                                            <SkeletonField className="w-[100px]" />
                                         )}
                                     </dd>
                                 </dd>
@@ -53,7 +55,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                         {details.dueDate ? (
                                             new Date(details.dueDate).toLocaleDateString("en-US")
                                         ) : (
-                                            <SkeletonField />
+                                            <SkeletonField className="w-[100px]" />
                                         )}
                                     </dd>
 
@@ -65,7 +67,7 @@ const InvoiceTemplate = (data: InvoiceType) => {
             </div>
 
             {/* create bill to and bill from section that will be 2 in grid */}
-            <div className="grid grid-cols-2 mt-4 w-full border-1 border-[#ebebeb] border-solid pb-4" >
+            <div className="grid grid-cols-2 w-full border-1 border-[#ebebeb] border-solid">
                 <div className="card w-full rounded-md border-r border-[#ebebeb] hover:bg-[#F1F5FF] cursor-pointer" onClick={() => setActiveStep(0)}>
                     <div className="card-details">
                         <h3 className="text-xs font-semibold uppercase text-gray-500 my-2">
@@ -79,18 +81,29 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                     width={140}
                                     height={100}
                                     alt={`Logo of ${sender.name}`}
+                                    className="w-16 h-16 rounded-full object-contain"
                                 />) : <SkeletonLogo />
                             }
                             <h3 className="mt-2 whitespace-normal text-xl font-medium text-gray-800">
-                                {sender.name ? sender.name : <SkeletonField />}
+                                {sender.name ? sender.name : <SkeletonField className="w-[100px]" />}
                             </h3>
-                            <address className="mt-2 not-italic text-[#999999] text-xs">
-                                {sender.address ? sender.address : <SkeletonField />}
-                                <br />
-                                {sender.zipCode && sender.city ? `${sender.zipCode}, ${sender.city}` : <SkeletonField />}
-                                <br />
-                                {sender.country ? sender.country : <SkeletonField />}
-                                <br />
+                            <address className="flex flex-col gap-2 mt-2 not-italic text-[#999999] text-xs">
+                                {sender.address ? <>
+                                    {sender.address}
+                                    <br />
+                                </> : <SkeletonField className="w-[100px]" />}
+
+                                {sender.zipCode && <>
+                                    {sender.zipCode}
+                                    <br />
+                                </> ? `${sender.zipCode}, ${sender.city}` : <SkeletonField className="w-[100px]" />}
+
+                                {sender.country ?
+                                    <>
+                                        {sender.country}
+                                        <br />
+                                    </>
+                                    : <SkeletonField className="w-[100px]" />}
                             </address>
 
                         </div>
@@ -110,16 +123,29 @@ const InvoiceTemplate = (data: InvoiceType) => {
                                 width={140}
                                 height={100}
                                 alt={`Logo of ${receiver.name}`}
+                                className="w-16 h-16 rounded-full object-contain"
                             />) : <SkeletonLogo />
                         }
                         <h3 className="mt-2 whitespace-normal text-xl font-medium text-gray-800">
-                            {receiver.name ? receiver.name : <SkeletonField />}
+                            {receiver.name ? receiver.name : <SkeletonField className="w-[100px]" />}
                         </h3>
-                        <address className="mt-2 not-italic text-[#999999] text-xs">
-                            {receiver.address && receiver.zipCode ? `${receiver.address}, ${receiver.zipCode}` : <SkeletonField />}
-                            <br />
-                            {receiver.city && receiver.country ? `${receiver.city}, ${receiver.country}` : <SkeletonField />}
-                            <br />
+                        <address className="flex flex-col gap-2 mt-2 not-italic text-[#999999] text-xs">
+                            {receiver.address ? <>
+                                {receiver.address}
+                                <br />
+                            </> : <SkeletonField className="w-[100px]" />}
+
+                            {receiver.zipCode && <>
+                                {receiver.zipCode}
+                                <br />
+                            </> ? `${receiver.zipCode}, ${receiver.city}` : <SkeletonField className="w-[100px]" />}
+
+                            {receiver.country ?
+                                <>
+                                    {receiver.country}
+                                    <br />
+                                </>
+                                : <SkeletonField className="w-[100px]" />}
                         </address>
                     </div>
                 </div>
@@ -268,79 +294,34 @@ const InvoiceTemplate = (data: InvoiceType) => {
             </div>
 
 
-            {/* <div>
-                <div className="my-4">
-                    <div className="my-2">
-                        <p className="font-semibold text-blue-600">
-                            Additional notes:
-                        </p>
-                        <p className="font-regular text-gray-800">
-                            {details.additionalNotes}
+            <div className="self-end">
+                {details?.signature?.data && isDataUrl(details?.signature?.data) ? (
+                    <div className="mt-6">
+                        <p className="font-semibold text-gray-800">Signature:</p>
+                        <img
+                            src={details.signature.data}
+                            width={120}
+                            height={60}
+                            alt={`Signature of ${sender.name}`}
+                        />
+                    </div>
+                ) : details.signature?.data ? (
+                    <div className="mt-6">
+                        <p className="text-gray-800">Signature:</p>
+                        <p
+                            style={{
+                                fontSize: 30,
+                                fontWeight: 400,
+                                fontFamily: `${details.signature.fontFamily}, cursive`,
+                                color: "black",
+                            }}
+                        >
+                            {details.signature.data}
                         </p>
                     </div>
-                    <div className="my-2">
-                        <p className="font-semibold text-blue-600">
-                            Payment terms:
-                        </p>
-                        <p className="font-regular text-gray-800">
-                            {details.paymentTerms}
-                        </p>
-                    </div>
-                    <div className="my-2">
-                        <span className="font-semibold text-md text-gray-800">
-                            Please send the payment to this address
-                            <p className="text-sm">
-                                Bank: {details.paymentInformation?.bankName}
-                            </p>
-                            <p className="text-sm">
-                                Account name:{" "}
-                                {details.paymentInformation?.accountName}
-                            </p>
-                            <p className="text-sm">
-                                Account no:{" "}
-                                {details.paymentInformation?.accountNumber}
-                            </p>
-                        </span>
-                    </div>
-                </div>
-                <p className="text-gray-500 text-sm">
-                    If you have any questions concerning this invoice, use the
-                    following contact information:
-                </p>
-                <div>
-                    <p className="block text-sm font-medium text-gray-800">
-                        {sender.email}
-                    </p>
-                    <p className="block text-sm font-medium text-gray-800">
-                        {sender.phone}
-                    </p>
-                </div>
+                ) : null}
             </div>
-            {details?.signature?.data && isDataUrl(details?.signature?.data) ? (
-                <div className="mt-6">
-                    <p className="font-semibold text-gray-800">Signature:</p>
-                    <img
-                        src={details.signature.data}
-                        width={120}
-                        height={60}
-                        alt={`Signature of ${sender.name}`}
-                    />
-                </div>
-            ) : details.signature?.data ? (
-                <div className="mt-6">
-                    <p className="text-gray-800">Signature:</p>
-                    <p
-                        style={{
-                            fontSize: 30,
-                            fontWeight: 400,
-                            fontFamily: `${details.signature.fontFamily}, cursive`,
-                            color: "black",
-                        }}
-                    >
-                        {details.signature.data}
-                    </p>
-                </div>
-            ) : null} */}
+
         </InvoiceLayout >
     );
 };

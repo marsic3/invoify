@@ -28,7 +28,7 @@ import WizardProgress from "./invoice/form/wizard/WizardProgress";
 // Form / Sections
 import BillFromSection from "./invoice/form/sections/BillFromSection";
 import BillToSection from "./invoice/form/sections/BillToSection";
-import InvoiceDetails from "./invoice/form/sections/InvoiceDetails";
+import InvoiceDetails from "./invoice/form/sections/InvoiceTerms";
 import Items from "./invoice/form/sections/Items";
 import PaymentInformation from "./invoice/form/sections/PaymentInformation";
 import InvoiceSummary from "./invoice/form/sections/InvoiceSummary";
@@ -40,7 +40,7 @@ import FinalPdf from "./invoice/actions/FinalPdf";
 
 // * Reusable components
 // Form fields
-import CurrencySelector from "./reusables/form-fields/CurrencySelector";
+import TokenSelector from "./reusables/form-fields/CurrencySelector";
 import FormInput from "./reusables/form-fields/FormInput";
 import FormTextarea from "./reusables/form-fields/FormTextarea";
 import DatePickerFormField from "./reusables/form-fields/DatePickerFormField";
@@ -98,52 +98,52 @@ import SendPdfEmail from "./templates/email/SendPdfEmail";
 import DevDebug from "./dev/DevDebug";
 
 export {
-    BaseNavbar,
-    BaseFooter,
-    InvoiceMain,
-    InvoiceForm,
-    InvoiceActions,
-    BillFromSection,
-    BillToSection,
-    InvoiceDetails,
-    Items,
-    SingleItem,
-    Charges,
-    TemplateSelector,
-    WizardNavigation,
-    WizardStep,
-    WizardProgress,
-    PaymentInformation,
-    InvoiceSummary,
-    CurrencySelector,
-    SavedInvoicesList,
-    PdfViewer,
-    LivePreview,
-    FinalPdf,
-    FormInput,
-    FormTextarea,
-    DatePickerFormField,
-    FormFile,
-    ChargeInput,
-    FormCustomInput,
-    BaseButton,
-    ThemeSwitcher,
-    LanguageSelector,
-    Subheading,
-    SendPdfToEmailModal,
-    InvoiceLoaderModal,
-    InvoiceExportModal,
-    SignatureModal,
-    DrawSignature,
-    TypeSignature,
-    UploadSignature,
-    SignatureColorSelector,
-    SignatureFontSelector,
-    NewInvoiceAlert,
-    DynamicInvoiceTemplate,
-    InvoiceLayout,
-    InvoiceTemplate1,
-    InvoiceTemplate2,
-    SendPdfEmail,
-    DevDebug,
+  BaseNavbar,
+  BaseFooter,
+  InvoiceMain,
+  InvoiceForm,
+  InvoiceActions,
+  BillFromSection,
+  BillToSection,
+  InvoiceDetails,
+  Items,
+  SingleItem,
+  Charges,
+  TemplateSelector,
+  WizardNavigation,
+  WizardStep,
+  WizardProgress,
+  PaymentInformation,
+  InvoiceSummary,
+  TokenSelector,
+  SavedInvoicesList,
+  PdfViewer,
+  LivePreview,
+  FinalPdf,
+  FormInput,
+  FormTextarea,
+  DatePickerFormField,
+  FormFile,
+  ChargeInput,
+  FormCustomInput,
+  BaseButton,
+  ThemeSwitcher,
+  LanguageSelector,
+  Subheading,
+  SendPdfToEmailModal,
+  InvoiceLoaderModal,
+  InvoiceExportModal,
+  SignatureModal,
+  DrawSignature,
+  TypeSignature,
+  UploadSignature,
+  SignatureColorSelector,
+  SignatureFontSelector,
+  NewInvoiceAlert,
+  DynamicInvoiceTemplate,
+  InvoiceLayout,
+  InvoiceTemplate1,
+  InvoiceTemplate2,
+  SendPdfEmail,
+  DevDebug,
 };

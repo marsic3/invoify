@@ -22,7 +22,7 @@ const BaseNavbar = () => {
         <header className="sticky top-0 z-50 bg-white shadow-sm w-full mx-auto">
             <nav>
                 <Card className="flex flex-wrap justify-between items-center px-5 gap-5">
-                    {/* <Link href={"/"}>
+                    <Link href={"/"}>
                         <Image
                             src={Logo}
                             alt="Invoify Logo"
@@ -30,9 +30,9 @@ const BaseNavbar = () => {
                             height={100}
                             loading="eager"
                         />
-                    </Link> */}
+                    </Link>
                     {/* ? DEV Only */}
-                    {/* {devEnv && <DevDebug />} */}
+                    {devEnv && <DevDebug />}
                     <LanguageSelector />
                     <ThemeSwitcher />
                 </Card>

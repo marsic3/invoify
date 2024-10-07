@@ -42,7 +42,7 @@ export default function InvoiceLayout({ data, children }: InvoiceLayoutProps) {
         <div className="flex flex-col items-center justify-between w-full h-full">
             {head}
             <section className="relative w-full h-full flex flex-col items-center justify-center">
-                <div className="w-full h-full flex flex-col items-center justify-start">
+                <div className="w-full h-full flex flex-col items-center justify-between">
                     {children}
                 </div>
             </section>

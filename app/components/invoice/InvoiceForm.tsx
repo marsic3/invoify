@@ -38,6 +38,7 @@ import {
 import { useTranslationContext } from "@/contexts/TranslationContext";
 import { FolderUp, Import, Plus, FileInput } from "lucide-react";
 import { useInvoiceContext } from "@/contexts/InvoiceContext";
+import { TokenInfo } from "@/lib/utils";
 
 const InvoiceForm = ({ onWizardChange, activeStep }: { onWizardChange: (step: number) => void, activeStep: number }) => {
     const { _t } = useTranslationContext();
@@ -66,8 +67,8 @@ const InvoiceForm = ({ onWizardChange, activeStep }: { onWizardChange: (step: nu
     }
 
     return (
-        <div className="flex h-full bg-slate-100 w-1/3">
-            <Card className="h-auto w-full flex flex-col items-center bg-white justify-between">
+        <div className="fixed left-0 top-0 z-50 flex h-full bg-slate-100 w-[30em]">
+            <Card className="h-auto w-full flex flex-col items-center bg-white justify-between overflow-scroll">
                 <CardHeader className="flex gap-2 self-start pb-20">
                     <div className="flex gap-1">
                         <CardTitle className="flex items-start gap-1" >
@@ -92,14 +93,15 @@ const InvoiceForm = ({ onWizardChange, activeStep }: { onWizardChange: (step: nu
                             <BillToSection />
                         </WizardStep>
                         <WizardStep activeStep={activeStep}>
-                            <div className="flex flex-wrap gap-y-10">
+                            <Items />
+                        </WizardStep>
+                        <WizardStep activeStep={activeStep}>
+                            <div className="flex w-full">
                                 <InvoiceDetails />
                             </div>
                         </WizardStep>
 
-                        <WizardStep activeStep={activeStep}>
-                            <Items />
-                        </WizardStep>
+
 
                         <WizardStep activeStep={activeStep}>
                             <PaymentInformation />
@@ -111,14 +113,14 @@ const InvoiceForm = ({ onWizardChange, activeStep }: { onWizardChange: (step: nu
                         <WizardStep activeStep={activeStep}>
                             <>
                                 <div className="w-full">
-                                    <Card className="flex flex-col gap-2 w-full py-4">
+                                    <Card className="flex flex-col gap-2 w-full py-4 bg-transparent border-none shadow-none justify-center items-center">
                                         <CardHeader>
-                                            <CardTitle>ACTIONS</CardTitle>
+                                            <CardTitle className="text-center">ACTIONS</CardTitle>
                                             <CardDescription>Operations and preview</CardDescription>
                                         </CardHeader>
 
-                                        <div className="flex flex-col flex-wrap items-center gap-2">
-                                            <div className="flex flex-wrap gap-3">
+                                        <div className="flex flex-col flex-wrap justify-center items-center gap-2">
+                                            <div className="flex flex-wrap gap-3 justify-center">
                                                 {/* Load modal button */}
                                                 <InvoiceLoaderModal>
                                                     <BaseButton
@@ -144,7 +146,7 @@ const InvoiceForm = ({ onWizardChange, activeStep }: { onWizardChange: (step: nu
                                                 </InvoiceExportModal>
                                             </div>
 
-                                            <div className="flex flex-wrap gap-3">
+                                            <div className="flex flex-wrap gap-3 justify-center">
                                                 {/* New invoice button */}
                                                 <NewInvoiceAlert>
                                                     <BaseButton
@@ -171,8 +173,6 @@ const InvoiceForm = ({ onWizardChange, activeStep }: { onWizardChange: (step: nu
                                         </div>
                                     </Card>
                                 </div><div className="relative z-10 flex items-center">
-                                    <div className="relative mx-auto flex w-[612.25px] origin-top scale-50 flex-col overflow-hidden rounded-[14px] bg-white shadow-[0_0_0_1px_rgba(0,25,59,.05),0_1px_1px_0_rgba(0,25,59,.04),0_3px_3px_0_rgba(0,25,59,.03),_0_6px_4px_0_rgba(0,25,59,.02),0_11px_4px_0_rgba(0,25,59,.01),0_32px_24px_-12px_rgba(0,0,59,.06)] before:absolute before:inset-0 before:rounded-[inherit] before:bg-[conic-gradient(from_var(--angle),transparent_0,#00C2FF_20%,transparent_25%)] before:p-[1px] before:opacity-0 before:[animation:inherit] before:[mask-composite:exclude!important] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] md:scale-[0.8] invoice:scale-100">
-                                    </div>
                                 </div>
                             </>
                         </WizardStep>

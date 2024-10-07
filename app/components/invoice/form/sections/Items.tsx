@@ -110,8 +110,9 @@ const Items = () => {
                     items={fields}
                     strategy={verticalListSortingStrategy}
                 >
-                    {fields.map((field, index) => (
-                        <SingleItem
+                    {fields.map((field, index) => {
+                        // console.log(field.name)
+                        return (<SingleItem
                             key={field.id}
                             name={ITEMS_NAME}
                             index={index}
@@ -121,7 +122,8 @@ const Items = () => {
                             moveFieldDown={moveFieldDown}
                             removeField={removeField}
                         />
-                    ))}
+                        )
+                    })}
                 </SortableContext>
                 {/* <DragOverlay
                     dropAnimation={{

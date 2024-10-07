@@ -24,15 +24,6 @@ const InvoiceTemplate2 = (data: InvoiceType) => {
                     <span className="mt-1 block text-gray-500">
                         {details.invoiceNumber}
                     </span>
-                    {details.invoiceLogo && (
-                        <img
-                            src={details.invoiceLogo}
-                            width={140}
-                            height={100}
-                            alt={`Logo of ${sender.name}`}
-                        />
-                    )}
-
                     <h1 className="mt-2 text-lg md:text-xl font-semibold text-blue-600">
                         {sender.name}
                     </h1>

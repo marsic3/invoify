@@ -158,14 +158,14 @@ const SingleItem = ({
                 key={index}
             >
                 <FormInput
-                    name={`${name} [${index}].name`}
+                    name={`${name}[${index}].name`}
                     label={_t("form.steps.lineItems.name")}
                     placeholder="Item name"
                     vertical
                 />
 
                 <FormInput
-                    name={`${name} [${index}].quantity`}
+                    name={`${name}[${index}].quantity`}
                     type="number"
                     label={_t("form.steps.lineItems.quantity")}
                     placeholder={_t("form.steps.lineItems.quantity")}
@@ -174,7 +174,7 @@ const SingleItem = ({
                 />
 
                 <FormInput
-                    name={`${name} [${index}].unitPrice`}
+                    name={`${name}[${index}].unitPrice`}
                     type="number"
                     label={_t("form.steps.lineItems.rate")}
                     labelHelper={`(${currency})`}

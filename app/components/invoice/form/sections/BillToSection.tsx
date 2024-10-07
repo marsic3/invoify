@@ -7,6 +7,7 @@ import { useFieldArray, useFormContext } from "react-hook-form";
 import {
     BaseButton,
     FormCustomInput,
+    FormFile,
     FormInput,
     Subheading,
 } from "@/app/components";
@@ -16,6 +17,7 @@ import { useTranslationContext } from "@/contexts/TranslationContext";
 
 // Icons
 import { Plus } from "lucide-react";
+import { Label } from "@radix-ui/react-label";
 
 const BillToSection = () => {
     const { control } = useFormContext();
@@ -43,41 +45,55 @@ const BillToSection = () => {
     return (
         <section className="flex flex-col gap-3 w-full">
             <Subheading>{_t("form.steps.fromAndTo.billTo")}:</Subheading>
-
+            <div className="flex flex-col gap-2 my-4">
+                <FormInput
+                    name="receiver.email"
+                    label={_t("form.steps.fromAndTo.email")}
+                    placeholder="e.g. info@example.com"
+                    vertical
+                />
+                {/* TODO: Add a tooltip to this label */}
+                <Label className="text-xs text-[#999999] font-normal">
+                    We will automatically populate the billing details if the company is found
+                </Label>
+            </div>
             <FormInput
                 name="receiver.name"
                 label={_t("form.steps.fromAndTo.name")}
-                placeholder="Receiver name"
+                placeholder="Acme Inc."
                 vertical
+            />
+            <FormFile
+                name="receiver.receiverLogo"
+                label={_t(
+                    "form.steps.fromAndTo.clientLogo"
+                )}
+                placeholder={_t(
+                    "form.steps.fromAndTo.clientLogoPlaceholder"
+                )}
             />
             <FormInput
                 name="receiver.address"
                 label={_t("form.steps.fromAndTo.address")}
-                placeholder="Receiver address"
+                placeholder="1234 Main St."
                 vertical
             />
             <FormInput
                 name="receiver.zipCode"
                 label={_t("form.steps.fromAndTo.zipCode")}
-                placeholder="Receiver zip code"
+                placeholder="12345"
                 vertical
             />
             <FormInput
                 name="receiver.city"
                 label={_t("form.steps.fromAndTo.city")}
-                placeholder="Receiver city"
+                placeholder="Solana Beach"
                 vertical
             />
             <FormInput
                 name="receiver.country"
                 label={_t("form.steps.fromAndTo.country")}
-                placeholder="Receiver country"
-                vertical
-            />
-            <FormInput
-                name="receiver.email"
-                label={_t("form.steps.fromAndTo.email")}
-                placeholder="Receiver email"
+                placeholder="Tokyo"
                 vertical
             />
             <FormInput

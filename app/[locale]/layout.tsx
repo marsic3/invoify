@@ -34,6 +34,10 @@ import { JSONLD, ROOTKEYWORDS } from "@/lib/seo";
 // Variables
 import { BASE_URL, GOOGLE_SC_VERIFICATION, LOCALES } from "@/lib/variables";
 
+// font 
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+
 export const metadata: Metadata = {
     title: "Invoify | Free Invoice Generator",
     description:
@@ -77,7 +81,7 @@ export default async function LocaleLayout({
     }
 
     return (
-        <html lang={locale}>
+        <html lang={locale} className={GeistSans.className}>
             <head>
                 <script
                     type="application/ld+json"

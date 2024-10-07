@@ -14,9 +14,13 @@
     },
     "steps": {
       "fromAndTo": {
+        "companyLogo": "Company Logo",
+        "placeholder": "Click to upload image",
+        "clientLogo": "Client Logo",
+        "clientLogoPlaceholder": "Click to upload image",
         "billFrom": "Your Company",
         "billTo": "Your Client",
-        "name": "Name",
+        "name": "Company Name",
         "address": "Address",
         "zipCode": "Zip",
         "city": "City",
@@ -33,6 +37,12 @@
           "label": "Invoice Logo",
           "placeholder": "Click to upload image"
         },
+        "unitPrice": "Unit Price",
+        "unitPricePlaceholder": "Enter unit price",
+        "quantity": "Quantity",
+        "quantityPlaceholder": "Enter quantity",
+        "pricePlaceholder": "Enter price",
+        "price": "Price",
         "invoiceNumber": "Invoice Number",
         "issuedDate": "Issue Date",
         "dueDate": "Due Date",

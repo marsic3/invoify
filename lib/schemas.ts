@@ -146,7 +146,6 @@ const SignatureSchema = z.object({
 });
 
 const InvoiceDetailsSchema = z.object({
-  invoiceLogo: fieldValidators.stringOptional,
   invoiceNumber: fieldValidators.stringMin1,
   invoiceDate: fieldValidators.date,
   dueDate: fieldValidators.date,

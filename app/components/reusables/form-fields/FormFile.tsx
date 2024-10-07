@@ -18,7 +18,7 @@ import { Label } from "@/components/ui/label";
 import { BaseButton } from "@/app/components";
 
 // Icons
-import { ImageMinus, Image } from "lucide-react";
+import { ImageMinus, PlusIcon, Trash2 } from "lucide-react";
 
 // Types
 import { NameType } from "@/types";
@@ -31,7 +31,7 @@ type FormFileProps = {
 
 const FormFile = ({ name, label, placeholder }: FormFileProps) => {
     const { control, setValue } = useFormContext();
-
+    const [isHovered, setIsHovered] = useState(false);
     const logoImage = useWatch({
         name: name,
         control,
@@ -68,61 +68,50 @@ const FormFile = ({ name, label, placeholder }: FormFileProps) => {
                 control={control}
                 name={name}
                 render={({ field }) => (
-                    <FormItem>
-                        <Label>{label}:</Label>
-                        {base64Image ? (
-                            <img
-                                id="logoImage"
-                                src={base64Image}
-                                style={{
-                                    objectFit: "contain",
-                                    width: "10rem",
-                                    height: "7rem",
-                                }}
-                            />
-                        ) : (
-                            <div
-                                style={{
-                                    objectFit: "contain",
-                                    width: "10rem",
-                                    height: "7rem",
-                                }}
-                            >
-                                <Label
-                                    htmlFor={name}
-                                    className="flex justify-center items-center h-[7rem] w-[10rem] cursor-pointer rounded-md bg-gray-100 dark:bg-slate-800 border border-black dark:border-white hover:border-blue-500"
-                                >
-                                    <>
-                                        <div className="flex flex-col items-center">
-                                            <Image />
-                                            <p>{placeholder}</p>
-                                        </div>
-                                        <FormControl>
-                                            <input
-                                                ref={fileInputRef}
-                                                type="file"
-                                                id={name}
-                                                className="hidden"
-                                                onChange={handleFileChange}
-                                                accept="image/*"
-                                            />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </>
-                                </Label>
-                            </div>
-                        )}
-                    </FormItem>
+                    <>
+                        <FormItem className="flex w-full justify-between pb-2 items-center text-black border-b border-[#ebebeb] focus-within:border-[#0094FF] [&:hover:not(:focus-within)]:border-black/20" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+                            <Label>{label}:</Label>
+                            {base64Image ? (
+                                <div className="relative rounded-full flex justify-end items-center gap-2 h-full mt-0">
+                                    <img
+                                        id="logoImage"
+                                        src={base64Image}
+                                        className="w-8 h-8 rounded-full object-contain"
+                                    />
+                                    <div className="flex flex-col justify-end items-center bg-red-500 rounded-full">
+                                        <Trash2 className="w-4 h-4 text-white m-2 cursor-pointer" onClick={removeLogo} />
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="flex w-fit justify-center items-center">
+                                    <Label
+                                        htmlFor={name}
+                                        className="flex justify-center items-center h-8 w-8 self-center rounded-full cursor-pointer bg-gray-100 border border-[#ebebeb] hover:border-gray-500"
+                                    >
+                                        <>
+                                            <div className="flex flex-col justify-center items-center">
+                                                <PlusIcon className="w-3 h-3" />
+                                            </div>
+                                            <FormControl>
+                                                <input
+                                                    ref={fileInputRef}
+                                                    type="file"
+                                                    id={name}
+                                                    className="hidden"
+                                                    onChange={handleFileChange}
+                                                    accept="image/*"
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </>
+                                    </Label>
+                                </div>
+                            )}
+                        </FormItem>
+                    </>
                 )}
             />
-            {base64Image && (
-                <div>
-                    <BaseButton variant="destructive" onClick={removeLogo}>
-                        <ImageMinus />
-                        Remove logo
-                    </BaseButton>
-                </div>
-            )}
+
         </>
     );
 };

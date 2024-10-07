@@ -42,7 +42,6 @@ const SavedInvoicesList = ({ setModalState }: SavedInvoicesListProps) => {
         selected.details.dueDate = new Date(selected.details.dueDate);
         selected.details.invoiceDate = new Date(selected.details.invoiceDate);
 
-        selected.details.invoiceLogo = "";
         selected.details.signature = {
             data: "",
         };

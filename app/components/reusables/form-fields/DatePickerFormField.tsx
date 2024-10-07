@@ -50,9 +50,9 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                 name={name}
                 render={({ field }) => (
                     <FormItem>
-                        <div className="flex justify-between gap-2 items-center text-sm">
+                        <div className="w-full relative group flex pb-2 items-center justify-between border-b border-[#ebebeb] transition-all focus-within:border-[#0094FF] [&:hover:not(:focus-within)]:border-black/20">
                             <div>
-                                <FormLabel>{label}:</FormLabel>
+                                <FormLabel className="text-xs text-black">{`${label}:`}</FormLabel>
                             </div>
                             <div>
                                 <Popover
@@ -62,14 +62,13 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                     <PopoverTrigger asChild>
                                         <FormControl>
                                             <Button
-                                                variant={"outline"}
+                                                variant={"ghost"}
                                                 className={cn(
-                                                    "w-[13rem]",
                                                     !field.value &&
-                                                    "text-muted-foreground"
+                                                    "text-muted-foreground text-xs font-normal"
                                                 )}
                                             >
-                                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                                <CalendarIcon className="mr-2 h-3 w-3" />
                                                 {field.value ? (
                                                     new Date(
                                                         field.value
@@ -78,17 +77,19 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                                         DATE_OPTIONS
                                                     )
                                                 ) : (
-                                                    <span>Pick a date</span>
+                                                    <span className="text-xs text-muted-foreground">
+                                                        Pick a date
+                                                    </span>
                                                 )}
                                             </Button>
                                         </FormControl>
                                     </PopoverTrigger>
-                                    <PopoverContent className="w-auto p-0">
+                                    <PopoverContent className="w-auto p-0 border-none shadow-lg">
                                         <Calendar
                                             mode="single"
-                                            captionLayout="dropdown-buttons"
-                                            defaultMonth={field.value}
-                                            selected={new Date(field.value)}
+                                            captionLayout="buttons"
+                                            defaultMonth={field.value ? new Date(field.value) : undefined}
+                                            selected={field.value ? new Date(field.value) : undefined}
                                             onSelect={(e) => {
                                                 field.onChange(e);
                                                 setIsPopoverOpen(false);
@@ -101,6 +102,7 @@ const DatePickerFormField = ({ name, label }: DatePickerFormFieldProps) => {
                                                 new Date().getFullYear() + 30
                                             }
                                             initialFocus
+                                            className="bg-white text-muted-foreground"
                                         />
                                     </PopoverContent>
                                 </Popover>

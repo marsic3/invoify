@@ -19,12 +19,12 @@ const WizardNavigation = () => {
 
     const { _t } = useTranslationContext();
     return (
-        <div className="flex justify-between h-full items-end gap-5">
-            {!isFirstStep && (
+        <div className="flex justify-end h-full items-end gap-5">
+            {!isFirstStep ? (
                 <Button variant="expandIcon" Icon={ArrowLeft} iconPlacement="left" onClick={previousStep}>
                     {_t("form.wizard.back")}
                 </Button>
-            )}
+            ) : <></>}
             {/* <BaseButton
                 tooltipLabel="Go to the next step"
                 disabled={isLastStep}
